@@ -1,8 +1,6 @@
 @import "tailwindcss";
 
-@plugin "daisyui" {
-  themes: night;
-};
+
   body{
     margin: 0;
     padding: 0;
