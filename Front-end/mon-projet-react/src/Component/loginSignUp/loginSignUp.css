@@ -84,6 +84,10 @@
     font-weight: 700;
     cursor:pointer;
 }
+.gray{
+    background: #eee8e8;
+    color: #a7a5a5;
+}
 /* Cibler les icônes à l'intérieur des blocs d'input */
 .input .user_icon {
   width: 20px;       /* Ajustez la largeur selon vos besoins */
