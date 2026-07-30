@@ -1,3 +1,4 @@
+import Dashboard from './Component/Dashboard/Dashboard';
 import LoginSignUp from './Component/loginSignUp/loginSignUp'
 
 
@@ -5,7 +6,7 @@ import LoginSignUp from './Component/loginSignUp/loginSignUp'
 function App() {
   return (
     <div>
-      <LoginSignUp />
+      <Dashboard /> 
     </div>
   );
 }
