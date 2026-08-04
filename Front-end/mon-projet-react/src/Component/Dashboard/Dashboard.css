@@ -1,4 +1,4 @@
-.img .sidebar_icon {
+.img {
   width: 50px;       /* Ajustez la largeur selon vos besoins */
   height: 50px;      /* Ajustez la hauteur selon vos besoins */
   object-fit: contain; /* Conserve les proportions de l'image */
