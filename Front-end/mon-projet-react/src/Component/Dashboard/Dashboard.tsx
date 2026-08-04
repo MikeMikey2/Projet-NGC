@@ -39,9 +39,9 @@
                 </ul>
             </div>
                     {/*Darkmode button*/}
-                       {darkmode?( <button className="p-2 bg-black self-start " onClick={()=>setDarkmode(false)}><img src={sun_icon} alt="Sun" className="img"/></button> )
+                       {darkmode?( <button  onClick={()=>setDarkmode(false)}><img src={sun_icon} alt="Sun" className="img"/></button> )
 
-                       :(<button className="p-2 bg-black self-start" onClick={()=>setDarkmode(true)}><img src={moon_icon} alt="Moon" className="img"/></button> 
+                       :(<button  onClick={()=>setDarkmode(true)}><img src={moon_icon} alt="Moon" className="img"/></button> 
                         
                        )}
             {/* Main content */}
