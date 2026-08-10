@@ -3,6 +3,8 @@ import './Userlist.css';
 import sidebar_icon from '../Assets/sidebard.png';
 import moon_icon from '../Assets/moon.png';
 import sun_icon from '../Assets/sun.png';
+import edit_icon from '../Assets/edit.png';
+import delete_icon from '../Assets/delete.png';
 import * as Icons from "lucide-react";
 
 /**
@@ -70,6 +72,7 @@ const Userlist = () => {
                                 <th>Surname</th>
                                 <th>Email</th>
                                 <th>Created</th>
+                                <th>Actions</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -80,6 +83,10 @@ const Userlist = () => {
                                 <td>Doe</td>
                                 <td>john.doe@example.com</td>
                                 <td>2023-01-01</td>
+                                <td>
+                                    <button className="action-button edit"><img src={edit_icon} alt="Edit" className="img"/></button>
+                                    <button className="action-button delete"><img src={delete_icon} alt="Delete" className="img"/></button>
+                                </td>
                             </tr>
                         </tbody>
                     </table>

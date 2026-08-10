@@ -98,3 +98,10 @@
     padding: 0.9rem 1rem;
   }
 }
+img {
+  width: 50px;       /* Ajustez la largeur selon vos besoins */
+  height: 50px;      /* Ajustez la hauteur selon vos besoins */
+  object-fit: contain; /* Conserve les proportions de l'image */
+  border-radius: 50%; /* Rend l'image circulaire */
+  cursor: pointer; /* Change le curseur pour indiquer que l'image est cliquable */
+}
