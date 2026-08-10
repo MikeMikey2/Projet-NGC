@@ -1,4 +1,6 @@
-import React, {  useState } from 'react';
+import React, {  useEffect, useState } from 'react';
+import {  useNavigate } from 'react-router-dom';
+import userService from '../../services/userService';
 import './Userlist.css';
 import sidebar_icon from '../Assets/sidebard.png';
 import moon_icon from '../Assets/moon.png';
@@ -11,6 +13,15 @@ import * as Icons from "lucide-react";
  * @return {*} 
  */
 const Userlist = () => {
+             let navigate=useNavigate();
+             useEffect(()=>{
+               userService.getAllUsers().then(res=>console.log(res.data)).catch(err=>console.log(err))
+             },[])
+             const marcel=(userid:string)=>{
+               console.log("click")
+                navigate('../Assets/user.png',{state:{userid:userid}})
+             }
+
             const [sidebarOpen, setSidebarOpen] = useState(false);
             const navItems = [
                 { name: "Dashboard", icon: Icons.Home },
@@ -48,6 +59,16 @@ const Userlist = () => {
                         
                        )}
             {/* Main content */}
+            <main className="flex-1 p-4">
+                                <header className="bg-white p-4 flex justify-between items-center shadow-md dark:text-gray-100 dark:bg-gray-900"> 
+                {/* 2. Utilisation d'une fonction toggle (!sidebarOpen) */}
+                <button className="p-2 text-xl font-bold" onClick={() => setSidebarOpen(true)}>
+                    <img src={sidebar_icon} alt="Sidebar" className="img" />
+                </button>
+                <h1 className="text-2xl font-bold">Userlist</h1>
+                <div className="bg-gray-300 w-10 h-10 rounded-full"></div>
+                </header>
+            </main>
             </div>
             )
 }
