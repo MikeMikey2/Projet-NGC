@@ -1,6 +1,4 @@
 import React, {  useEffect, useState } from 'react';
-import {  useNavigate } from 'react-router-dom';
-import userService from '../../services/userService';
 import './Userlist.css';
 import sidebar_icon from '../Assets/sidebard.png';
 import moon_icon from '../Assets/moon.png';
@@ -12,15 +10,8 @@ import * as Icons from "lucide-react";
  *
  * @return {*} 
  */
-const Userlist = () => {
-             let navigate=useNavigate();
-             useEffect(()=>{
-               userService.getAllUsers().then(res=>console.log(res.data)).catch(err=>console.log(err))
-             },[])
-             const marcel=(userid:string)=>{
-               console.log("click")
-                navigate('../Assets/user.png',{state:{userid:userid}})
-             }
+const Userlist = () => {   
+
 
             const [sidebarOpen, setSidebarOpen] = useState(false);
             const navItems = [
@@ -66,10 +57,35 @@ const Userlist = () => {
                     <img src={sidebar_icon} alt="Sidebar" className="img" />
                 </button>
                 <h1 className="text-2xl font-bold">Userlist</h1>
-                <div className="bg-gray-300 w-10 h-10 rounded-full"></div>
+                <div className="bg-gray-300 w-10 h-10 rounded-full">
+                </div>
                 </header>
+                <div className="user-table-container">
+                    <table className="user-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Role</th>
+                                <th>Name</th>
+                                <th>Surname</th>
+                                <th>Email</th>
+                                <th>Created</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>Admin</td>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>john.doe@example.com</td>
+                                <td>2023-01-01</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </main>
             </div>
             )
-}
+} 
 export default Userlist;
