@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import './loginSignUp.css'
 import user_icon from '../Assets/user.png'    
 import password_icon from '../Assets/password.png'
@@ -6,7 +6,11 @@ import email_icon from '../Assets/email.png'
 
 const loginSignUp = ()=>{
     const[action, setAction] = useState("signup")
-
+    useEffect(() => {
+  fetch("http://localhost:8080/hello")
+    .then(res => res.text())
+    .then(data => console.log(data));
+}, []);
 return(
     <div className="container">
         <div className="header">

@@ -7,7 +7,7 @@ import Userlist from './Component/Userlist/Userlist';
 function App() {
   return (
     <div>
-      <Userlist /> 
+      <LoginSignUp /> 
     </div>
   );
 }
