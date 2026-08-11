@@ -1,4 +1,4 @@
-import React, {  useEffect, useState } from 'react';
+import React, {   useState } from 'react';
 import './Userlist.css';
 import sidebar_icon from '../Assets/sidebard.png';
 import moon_icon from '../Assets/moon.png';
@@ -62,6 +62,7 @@ const Userlist = () => {
                 <div className="bg-gray-300 w-10 h-10 rounded-full">
                 </div>
                 </header>
+                <button>Ajouter</button>
                 <div className="user-table-container">
                     <table className="user-table">
                         <thead>
