@@ -10,7 +10,7 @@ interface RoleOption {
   nomRole: string;
 }
 
-const loginSignUp = () => {
+const LoginSignUp = () => {
   const [action, setAction] = useState("signup")
   const [email, setEmail] = useState("")
   const [motDePasse, setMotDePasse] = useState("")
@@ -24,7 +24,15 @@ const loginSignUp = () => {
   useEffect(() => {
     fetch("http://localhost:8080/api/roles")
       .then(res => res.json())
-      .then(data => setRoles(data));
+      .then(data => {
+        // Sécurité : s'assurer que data est bien un tableau avant de mettre à jour le state
+        if (Array.isArray(data)) {
+          setRoles(data)
+        } else {
+          setRoles([])
+        }
+      })
+      .catch(() => setRoles([]));
   }, []);
 
   const handleLogin = () => {
@@ -72,7 +80,7 @@ const loginSignUp = () => {
         <div className="underline"></div>
       </div>
       <div className="inputs">
-        {action === "login" ? <div></div> : (
+        {action === "login" ? null : (
           <>
             <div className="input">
               <img src={user_icon} alt="" className="user_icon"/>
@@ -81,7 +89,7 @@ const loginSignUp = () => {
             <div className="input">
               <select value={roleId} onChange={e => setRoleId(e.target.value)}>
                 <option value="">Choisir un rôle</option>
-                {roles.map(r => (
+                {Array.isArray(roles) && roles.map(r => (
                   <option key={r.idRole} value={r.idRole}>{r.nomRole}</option>
                 ))}
               </select>
@@ -99,17 +107,18 @@ const loginSignUp = () => {
       </div>
       {erreur && <div style={{ color: "red", marginTop: "10px" }}>{erreur}</div>}
       {message && <div style={{ color: "green", marginTop: "10px" }}>{message}</div>}
-      {action === "signup" ? <div></div> : <div className="forgot-password">Lost password?<span>Click here !</span></div>}
+      {action === "signup" ? null : <div className="forgot-password">Lost password? <span>Click here !</span></div>}
       <div className="submit-container">
-        <div className={action === "login" ? "submit gray" : "submit"} onClick={() => { setAction("signup") }}>SignUp</div>
-        <div className={action === "signup" ? "submit gray" : "submit"} onClick={() => { setAction("login") }}>Login</div>
+        <div className={action === "login" ? "submit gray" : "submit"} onClick={() => setAction("signup")}>SignUp</div>
+        <div className={action === "signup" ? "submit gray" : "submit"} onClick={() => setAction("login")}>Login</div>
       </div>
       <div className="submit-container" style={{ marginTop: "15px" }}>
         {action === "login"
-          ? <div className="submit" onClick={handleLogin}>Se connecter</div>
-          : <div className="submit" onClick={handleRegister}>S'inscrire</div>}
+          ? <div className="submit" onClick={handleLogin}>Access</div>
+          : <div className="submit" onClick={handleRegister}>Send</div>}
       </div>
     </div>
   )
 }
-export default loginSignUp;
+
+export default LoginSignUp;
