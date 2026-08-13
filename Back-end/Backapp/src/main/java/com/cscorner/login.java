@@ -10,10 +10,12 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:5173")
+@RequestMapping("/api")
+@CrossOrigin(origins = "*") // Permet l'accès depuis n'importe quel port front-end (3000, 5173, etc.)
 public class login {
 
     @Autowired
@@ -22,7 +24,7 @@ public class login {
     @Autowired
     private RoleRepository roleRepository;
 
-    @PostMapping("/api/login")
+    @PostMapping("/login")
     public String seConnecter(@RequestBody LoginRequest requete) {
         Optional<Utilisateur> utilisateur = utilisateurRepository.findByEmail(requete.getEmail());
         if (utilisateur.isPresent() && utilisateur.get().getMotDePasse().equals(requete.getMotDePasse())) {
@@ -32,12 +34,12 @@ public class login {
         }
     }
 
-    @GetMapping("/api/roles")
+    @GetMapping("/roles")
     public List<Role> listerRoles() {
         return roleRepository.findAll();
     }
 
-    @PostMapping("/api/register")
+    @PostMapping("/register")
     public String sInscrire(@RequestBody RegisterRequest requete) {
         if (utilisateurRepository.findByEmail(requete.getEmail()).isPresent()) {
             return "Cet email est déjà utilisé";

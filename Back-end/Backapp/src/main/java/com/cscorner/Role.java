@@ -8,27 +8,27 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Role")
+@Table(name = "Role") // <-- Indique à Hibernate d'utiliser la table "Role" avec majuscule
 public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_role") // <-- Fait le lien avec id_role dans MySQL
-    private Integer idRole;
+    @Column(name = "id_role") // Liqueur la colonne SQL id_role
+    private Long idRole;
 
-    @Column(name = "nom_role") // <-- Fait le lien avec nom_role dans MySQL
+    @Column(name = "nom_role") // Liqueur la colonne SQL nom_role
     private String nomRole;
 
-    @Column(name = "type_role") // <-- Fait le lien avec type_role dans MySQL
+    @Column(name = "type_role") // Liqueur la colonne SQL type_role
     private String typeRole;
 
     // Getters & Setters
-    public Integer getIdRole() { return idRole; }
-    public void setIdRole(Integer id) { this.idRole = id; }
+    public Long getIdRole() { return idRole; }
+    public void setIdRole(Long idRole) { this.idRole = idRole; }
 
     public String getNomRole() { return nomRole; }
-    public void setNomRole(String nom) { this.nomRole = nom; }
+    public void setNomRole(String nomRole) { this.nomRole = nomRole; }
 
     public String getTypeRole() { return typeRole; }
-    public void setTypeRole(String type) { this.typeRole = type; }
+    public void setTypeRole(String typeRole) { this.typeRole = typeRole; }
 }
