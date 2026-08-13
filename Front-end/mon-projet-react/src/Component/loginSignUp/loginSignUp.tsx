@@ -88,17 +88,15 @@ const LoginSignUp = () => {
             </div>
             <div className="input">
               <select value={roleId} onChange={e => setRoleId(e.target.value)}>
-                    <option value="">Choisir un rôle</option>
-                     {Array.isArray(roles) && roles.map((r: any) => (
-                    <option 
-                          key={r.idRole || r.id_role} 
-                          value={r.idRole || r.id_role}
-                        >
-                         {r.nomRole || r.nom_role}
-                    </option>
-              ))}
-             </select>
-            </div>
+                  <option value="">Choisir un rôle</option>
+                     {Array.isArray(roles) && roles.map(r => (
+                  <option key={r.idRole} value={r.idRole}>
+                       {r.nomRole}
+                  </option>
+                        ))}
+  </select>
+</div>
+           
           </>
         )}
         <div className="input">
