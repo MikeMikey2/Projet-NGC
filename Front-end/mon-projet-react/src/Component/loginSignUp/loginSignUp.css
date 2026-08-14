@@ -55,6 +55,16 @@
     font-size: 18px;
     font-weight: 400;
 }
+.select{
+    width: 400px;
+    height: 50px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: #131212;
+    font-size: 18px;
+    font-weight: 400;
+}
 .forgot-password{
     padding-left:63px;
     margin-top: 27px;
