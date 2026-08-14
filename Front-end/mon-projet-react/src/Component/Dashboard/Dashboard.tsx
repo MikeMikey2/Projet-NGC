@@ -1,4 +1,5 @@
-    import React, { useState } from "react";
+    import React, { useState } from "react"
+    import { useNavigate } from "react-router-dom"
     import './Dashboard.css';
     import sidebar_icon from '../Assets/sidebard.png';
     import moon_icon from '../Assets/moon.png';
@@ -9,19 +10,32 @@
  *
  * @return {*} 
  */
+interface NavItem {
+          name: string;
+          icon: Icons.LucideIcon;
+          path: string;
+        }
+const navItems: NavItem[] = [
+            { name: "Dashboard", icon: Icons.Home, path: "/dashboard" },
+            { name: "My projects", icon: Icons.FolderOpen, path: "/my-projects" },
+            { name: "Free projects", icon: Icons.Gift, path: "/free-projects" },
+            { name: "Users", icon: Icons.Users, path: "/users" },
+            { name: "Document", icon: Icons.FileText, path: "/document" },
+            { name: "Settings", icon: Icons.Settings, path: "/settings" }
+    ]   
 const Dashboard = () => {
         // 1. Inversion de l'état pour pouvoir ouvrir ET fermer
         const [sidebarOpen, setSidebarOpen] = useState(false);
-        const navItems = [
-            { name: "Dashboard", icon: Icons.Home },
-            { name: "My projects", icon: Icons.FolderOpen },
-            { name: "Free projects", icon: Icons.Gift },
-            { name: "Users", icon: Icons.Users },
-            { name: "Document", icon: Icons.FileText },
-            { name: "Settings", icon: Icons.Settings }
-        ]
         const[darkmode, setDarkmode] = useState(false)
+        //navigation
+        const navigate = useNavigate()
+        // Définition de l'interface pour les items du menu
+        
 
+        const handlenavigation = (path: string) => {
+            setSidebarOpen(false); // Fermer la sidebar lors de la navigation
+            navigate(path);
+        }   
         return (
             <div className={"flex bg-gray-100 h-screen " + (darkmode ? "dark" : "") + " dark:bg-gray-900"}>
             {/* Sidebar corrigée avec les espaces et "lg:" */}
@@ -34,8 +48,10 @@ const Dashboard = () => {
 
             {/* La navbar déplacée ICI, à l'intérieur de la sidebar */}
                 <ul className="p-4 space-y-2">
-                   {navItems.map(({ name, icon: Icon }) => (
-                  <li key={name} className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 cursor-pointer dark:text-gray-100">
+                   {navItems.map(({ name, icon: Icon, path }) => (
+                  <li key={name} className="flex items-center gap-3 px-4 py-3 rounded-lg text-gray-700 hover:bg-gray-100 cursor-pointer dark:text-gray-100"
+                  onClick={() => handlenavigation(path)}
+                  >
                     <Icon className="w-5 h-5 text-gray-600" />
                     <span>{name}</span>
                   </li>
