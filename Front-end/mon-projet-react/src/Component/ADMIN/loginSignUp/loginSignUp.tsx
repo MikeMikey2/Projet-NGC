@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import './loginSignUp.css'
-import user_icon from '../Assets/user.png'    
-import password_icon from '../Assets/password.png'
-import email_icon from '../Assets/email.png'
+import user_icon from '../../Assets/user.png'    
+import password_icon from '../../Assets/password.png'
+import email_icon from '../../Assets/email.png'
 
 interface RoleOption {
   idRole: number;

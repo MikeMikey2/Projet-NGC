@@ -1,9 +1,9 @@
     import React, { useState } from "react"
     import { useNavigate } from "react-router-dom"
     import './Dashboard.css';
-    import sidebar_icon from '../Assets/sidebard.png';
-    import moon_icon from '../Assets/moon.png';
-    import sun_icon from '../Assets/sun.png';
+    import sidebar_icon from '../../Assets/sidebard.png';
+    import moon_icon from '../../Assets/moon.png';
+    import sun_icon from '../../Assets/sun.png';
     import * as Icons from "lucide-react";
 /**
  *

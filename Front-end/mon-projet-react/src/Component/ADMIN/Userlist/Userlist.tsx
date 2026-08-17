@@ -1,11 +1,11 @@
 import React, {   useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Userlist.css';
-import sidebar_icon from '../Assets/sidebard.png';
-import moon_icon from '../Assets/moon.png';
-import sun_icon from '../Assets/sun.png';
-import edit_icon from '../Assets/edit.png';
-import delete_icon from '../Assets/delete.png';
+import sidebar_icon from '../../Assets/sidebard.png';
+import moon_icon from '../../Assets/moon.png';
+import sun_icon from '../../Assets/sun.png';
+import edit_icon from '../../Assets/edit.png';
+import delete_icon from '../../Assets/delete.png';
 import * as Icons from "lucide-react";
 
 /**
