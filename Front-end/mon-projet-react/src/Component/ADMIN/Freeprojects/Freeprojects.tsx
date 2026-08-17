@@ -69,8 +69,15 @@ const FreeProjects = () => {
                        )}
             {/* Main content */}
             <main className="flex-1 p-4">
-                <h1 className="text-2xl font-bold">Free Projects</h1>
-                <p>Welcome to the Free Projects page!</p>
+                <header className="bg-white p-4 flex justify-between items-center shadow-md dark:text-gray-100 dark:bg-gray-900"> 
+                {/* 2. Utilisation d'une fonction toggle (!sidebarOpen) */}
+                <button className="p-2 text-xl font-bold" onClick={() => setSidebarOpen(true)}>
+                    <img src={sidebar_icon} alt="Sidebar" className="img" />
+                </button>
+                <h1 className="text-2xl font-bold">Freeprojects</h1>
+                <div className="bg-gray-300 w-10 h-10 rounded-full"></div>
+                </header>
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-4"></div>
             </main>
             </div>
         )
