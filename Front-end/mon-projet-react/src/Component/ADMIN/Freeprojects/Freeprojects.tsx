@@ -1,11 +1,12 @@
     import React, { useState } from "react"
     import { useNavigate } from "react-router-dom"
-    import './Dashboard.css';
+    import './Freeprojects.css';
     import sidebar_icon from '../../Assets/sidebard.png';
     import moon_icon from '../../Assets/moon.png';
     import sun_icon from '../../Assets/sun.png';
     import * as Icons from "lucide-react";
-/**
+
+    /**
  *
  *
  * @return {*} 
@@ -18,24 +19,26 @@ interface NavItem {
 const navItems: NavItem[] = [
             { name: "Dashboard", icon: Icons.Home, path: "/dashboard" },
             { name: "My projects", icon: Icons.FolderOpen, path: "/my-projects" },
-            { name: "Free projects", icon: Icons.Gift, path: "/Freeprojects" },
+            { name: "Free projects", icon: Icons.Gift, path: "/free-projects" },
             { name: "Users", icon: Icons.Users, path: "/Userlist" },
             { name: "Document", icon: Icons.FileText, path: "/document" },
             { name: "Settings", icon: Icons.Settings, path: "/settings" }
     ]   
-const Dashboard = () => {
-        //  Inversion de l'état pour pouvoir ouvrir ET fermer
-        const [sidebarOpen, setSidebarOpen] = useState(false);
-        const[darkmode, setDarkmode] = useState(false)
-        //navigation
-        const navigate = useNavigate()
-        // Définition de l'interface pour les items du menu
-        
 
-        const handlenavigation = (path: string) => {
-            setSidebarOpen(false); // Fermer la sidebar lors de la navigation
-            navigate(path);
-        }   
+const FreeProjects = () => {
+    //  Inversion de l'état pour pouvoir ouvrir ET fermer
+            const [sidebarOpen, setSidebarOpen] = useState(false);
+            const[darkmode, setDarkmode] = useState(false)
+            //navigation
+            const navigate = useNavigate()
+            // Définition de l'interface pour les items du menu
+            
+    
+            const handlenavigation = (path: string) => {
+                setSidebarOpen(false); // Fermer la sidebar lors de la navigation
+                navigate(path);
+            }
+            
         return (
             <div className={"flex bg-gray-100 h-screen " + (darkmode ? "dark" : "") + " dark:bg-gray-900"}>
             {/* Sidebar corrigée avec les espaces et "lg:" */}
@@ -66,32 +69,10 @@ const Dashboard = () => {
                        )}
             {/* Main content */}
             <main className="flex-1 p-4">
-                <header className="bg-white p-4 flex justify-between items-center shadow-md dark:text-gray-100 dark:bg-gray-900"> 
-                {/* 2. Utilisation d'une fonction toggle (!sidebarOpen) */}
-                <button className="p-2 text-xl font-bold" onClick={() => setSidebarOpen(true)}>
-                    <img src={sidebar_icon} alt="Sidebar" className="img" />
-                </button>
-                <h1 className="text-2xl font-bold">Dashboard</h1>
-                <div className="bg-gray-300 w-10 h-10 rounded-full"></div>
-                </header>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-4">
-                    {/*All cards*/}
-                    <div className="bg-white p-6 shadow-lg rounded-lg dark:bg-gray-800">
-                        <h2 className="text-xl font-bold dark:text-gray-100">Card 1</h2>
-                        <p className="text-lg p-1 text-gray-700 dark:text-gray-100">Description for Card 1</p>
-                    </div>
-                    <div className="bg-white p-6 shadow-lg rounded-lg dark:bg-gray-800">
-                        <h2 className="text-xl font-bold dark:text-gray-100">Card 2</h2>
-                        <p className="text-lg p-1 text-gray-700 dark:text-gray-100">Description for Card 2</p>
-                    </div>
-                    <div className="bg-white p-6 shadow-lg rounded-lg dark:bg-gray-800 ">
-                        <h2 className="text-xl font-bold dark:text-gray-100">Card 3</h2>
-                        <p className="text-lg p-1 text-gray-700 dark:text-gray-100">Description for Card 3</p>
-                    </div>
-                </div>
+                <h1 className="text-2xl font-bold">Free Projects</h1>
+                <p>Welcome to the Free Projects page!</p>
             </main>
             </div>
-        );
-    };
-
-    export default Dashboard;
+        )
+}
+export default FreeProjects
