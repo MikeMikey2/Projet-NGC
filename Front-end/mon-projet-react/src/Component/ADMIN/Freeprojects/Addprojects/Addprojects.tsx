@@ -78,8 +78,35 @@ const Addprojects = () => {
                 <h1 className="text-2xl font-bold">Addprojects  </h1>
                 <div className="bg-gray-300 w-10 h-10 rounded-full"></div>
                 </header>
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-4 gap-4">
-                    
+                <div className="project-form-grid p-4 gap-4">
+                    <div className="project-hero">
+                        <h1>New Project</h1>
+                    </div>
+
+                    <form className="project-form">
+                        <div className="form-field">
+                            <label>Titre</label>
+                            <input type="text" placeholder="Ex: Bug d'affichage" />
+                        </div>
+                        <div className="form-field">
+                            <label>Description</label>
+                            <textarea placeholder="Ex: Le bouton de connexion ne fonctionne pas sur la page d'accueil"></textarea>
+                        </div>
+                        <div className="form-field">
+                            <label>Echéance</label>
+                            <input type="date" />
+                        </div>
+                        <div className="form-field">
+                            <label>Priorité</label>
+                            <select>
+                                <option value="haute">Haute</option>
+                                <option value="moyenne">Moyenne</option>
+                                <option value="basse">Basse</option>
+                                <option value="critique">Critique</option>
+                            </select>
+                        </div>
+                        <button type="submit">Ajouter le projet</button>
+                    </form>
                 </div>
             </main>
             </div>    
