@@ -5,6 +5,7 @@ import LoginSignUp from './Component/ADMIN/loginSignUp/loginSignUp';
 import Userlist from './Component/ADMIN/Userlist/Userlist';
 import Freeprojects from './Component/ADMIN/Freeprojects/Freeprojects';
 import Myprojects from './Component/ADMIN/Myprojects/Myprojects';
+import Addprojects from './Component/ADMIN/Freeprojects/Addprojects/Addprojects';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/userlist" element={<Userlist />} />
         <Route path="/Freeprojects" element={<Freeprojects />} />  
         <Route path='/Myprojects' element={<Myprojects/>}/>
+        <Route path='/Addprojects' element={<Addprojects/>}/>
       </Routes>
     </BrowserRouter>
   );

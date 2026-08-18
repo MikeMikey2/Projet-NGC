@@ -6,6 +6,12 @@ import moon_icon from '../../Assets/moon.png';
 import sun_icon from '../../Assets/sun.png';
 import * as Icons from "lucide-react";
 
+/**
+ *
+ *
+ * @return {*}
+ */
+
 interface NavItem {
   name: string;
   icon: Icons.LucideIcon;
@@ -37,11 +43,7 @@ const ticketsStatiques: Ticket[] = [
   { id: 5, titre: "Demande accès VPN", priorite: "Basse", statut: "Clôturé", affecteA: "S. Nono" },
 ]
 
-/**
- *
- *
- * @return {*}
- */
+
 const FreeProjects = () => {
   // --- État sidebar / dark mode / navigation ---
   const [sidebarOpen, setSidebarOpen] = useState(false);
@@ -66,8 +68,7 @@ const FreeProjects = () => {
   })
 
   const handleNouveauTicket = () => {
-    // à connecter plus tard : navigate("/tickets/nouveau") ou ouverture d'un modal
-    console.log("Créer un nouveau ticket")
+    navigate('/Addprojects'); // Naviguer vers la page d'ajout de ticket
   }
 
   return (
