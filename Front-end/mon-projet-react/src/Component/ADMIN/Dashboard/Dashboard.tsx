@@ -20,7 +20,7 @@ const navItems: NavItem[] = [
             { name: "My projects", icon: Icons.FolderOpen, path: "/myprojects" },
             { name: "Free projects", icon: Icons.Gift, path: "/Freeprojects" },
             { name: "Users", icon: Icons.Users, path: "/Userlist" },
-            { name: "Document", icon: Icons.FileText, path: "/document" },
+            { name: "Document", icon: Icons.FileText, path: "/Document" },
             { name: "Settings", icon: Icons.Settings, path: "/settings" }
     ]   
 const Dashboard = () => {
