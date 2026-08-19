@@ -93,10 +93,6 @@ const Addprojects = () => {
                             <textarea placeholder="Ex: Le bouton de connexion ne fonctionne pas sur la page d'accueil"></textarea>
                         </div>
                         <div className="form-field">
-                            <label>Echéance</label>
-                            <input type="date" />
-                        </div>
-                        <div className="form-field">
                             <label>Priorité</label>
                             <select>
                                 <option value="haute">Haute</option>
