@@ -1,8 +1,14 @@
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/BackappApplication.java
+/home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/Commentaire.java
+/home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/CommentaireController.java
+/home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/CommentaireRepository.java
+/home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/CommentaireRequest.java
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/LoginRequest.java
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/RegisterRequest.java
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/Role.java
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/RoleRepository.java
+/home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/Ticket.java
+/home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/TicketRepository.java
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/Utilisateur.java
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/UtilisateurRepository.java
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/login.java

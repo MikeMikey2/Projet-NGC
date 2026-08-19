@@ -1,8 +1,8 @@
-com/cscorner/LoginRequest.class
 com/cscorner/UtilisateurRepository.class
 com/cscorner/RegisterRequest.class
-com/cscorner/login.class
 com/cscorner/Role.class
+com/cscorner/LoginRequest.class
+com/cscorner/login.class
 com/cscorner/RoleRepository.class
 com/cscorner/Utilisateur.class
 com/cscorner/BackappApplication.class
