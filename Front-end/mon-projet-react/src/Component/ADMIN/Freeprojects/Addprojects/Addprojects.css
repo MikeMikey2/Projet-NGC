@@ -91,6 +91,54 @@
   box-shadow: 0 10px 18px rgba(37, 99, 235, 0.25);
 }
 
+/* Dark mode styles when a parent has the `dark` class */
+.dark .project-form-grid {
+  background: #0b1220;
+  border-radius: 20px;
+  box-shadow: 0 12px 32px rgba(2, 6, 23, 0.6);
+  color: #e6eef8;
+}
+
+.dark .project-hero {
+  background: linear-gradient(135deg, #071428, #0b1220);
+  border: 1px solid rgba(255,255,255,0.04);
+}
+
+.dark .project-hero h1 {
+  color: #e6eef8;
+}
+
+.dark .project-form {
+  background: #071428;
+  padding: 1.5rem;
+  border-radius: 18px;
+  border: 1px solid #102231;
+}
+
+.dark .form-field label {
+  color: #cbd5e1;
+}
+
+.dark .project-form input,
+.dark .project-form textarea,
+.dark .project-form select {
+  background: #071428;
+  color: #e6eef8;
+  border: 1px solid #213242;
+}
+
+.dark .project-form input:focus,
+.dark .project-form textarea:focus,
+.dark .project-form select:focus {
+  outline: none;
+  border-color: #60a5fa;
+  box-shadow: 0 0 0 4px rgba(96,165,250,0.08);
+}
+
+.dark .project-form button {
+  background: linear-gradient(135deg, #2563eb, #1d4ed8);
+}
+
 @media (max-width: 767px) {
   .project-form-grid {
     padding: 1rem;

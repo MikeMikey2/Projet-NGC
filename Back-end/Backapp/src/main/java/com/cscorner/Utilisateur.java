@@ -1,5 +1,6 @@
 package com.cscorner;
 
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -11,6 +12,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 
 @Entity
@@ -25,6 +27,7 @@ public class Utilisateur {
     private String prenomUtilisateur;
     private String email;
     private String motDePasse;
+    private LocalDateTime date_insc;
 
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
@@ -33,6 +36,11 @@ public class Utilisateur {
         inverseJoinColumns = @JoinColumn(name = "id_role")
     )
     private Set<Role> roles = new HashSet<>();
+
+    @PrePersist
+    protected void onCreate() {
+        this.date_insc = LocalDateTime.now();
+    }
 
     // --- Getters et Setters ---
 
@@ -57,7 +65,7 @@ public class Utilisateur {
         this.prenomUtilisateur = prenomUtilisateur;
     }
 
-    public String getEmail() {  
+    public String getEmail() {
         return email;
     }
     public void setEmail(String email) {
@@ -71,10 +79,14 @@ public class Utilisateur {
         this.motDePasse = motDePasse;
     }
 
-    public Set<Role> getRoles() { 
-        return roles; 
+    public Set<Role> getRoles() {
+        return roles;
     }
-    public void setRoles(Set<Role> roles) { 
-        this.roles = roles; 
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public LocalDateTime getDateInscription() {
+        return date_insc;
     }
 }
