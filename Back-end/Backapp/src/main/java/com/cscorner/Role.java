@@ -13,13 +13,13 @@ public class Role {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_role") // Liqueur la colonne SQL id_role
+    @Column(name = "id_role") 
     private Long idRole;
 
-    @Column(name = "nom_role") // Liqueur la colonne SQL nom_role
+    @Column(name = "nom_role") 
     private String nomRole;
 
-    @Column(name = "type_role") // Liqueur la colonne SQL type_role
+    @Column(name = "type_role") 
     private String typeRole;
 
     // Getters & Setters
