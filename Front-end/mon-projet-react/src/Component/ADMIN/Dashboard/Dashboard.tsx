@@ -18,7 +18,6 @@ const navItems: NavItem[] = [
   { name: "Free projects", icon: Icons.Gift, path: "/Freeprojects" },
   { name: "Users", icon: Icons.Users, path: "/Userlist" },
   { name: "Document", icon: Icons.FileText, path: "/document" },
-  { name: "Settings", icon: Icons.Settings, path: "/settings" }
 ];
 
 const stats = [
