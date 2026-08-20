@@ -8,7 +8,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "Role") // <-- Indique à Hibernate d'utiliser la table "Role" avec majuscule
+@Table(name = "Role") 
 public class Role {
 
     @Id
