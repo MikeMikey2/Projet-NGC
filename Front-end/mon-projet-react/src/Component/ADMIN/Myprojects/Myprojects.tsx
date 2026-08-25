@@ -104,7 +104,7 @@ const Myprojects = () => {
             <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setSidebarOpen(!sidebarOpen)}>
               <img src={sidebar_icon} alt="Sidebar" className="w-6 h-6" />
             </button>
-            <h1 className="text-2xl font-bold">Gestion des Projets et projets</h1>
+            <h1 className="text-2xl font-bold">Gestion des Projets et Tickets</h1>
           </div>
 
           <div className="flex items-center gap-4">
