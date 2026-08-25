@@ -12,9 +12,9 @@ interface NavItem {
   path: string;
 }
 
-// Interface calquée sur la table `ticket` de la base de données
-interface Ticket {
-  id_ticket: number;
+// Interface calquée sur la table `projet` de la base de données
+interface projet {
+  id_projet: number;
   titre: string;
   description: string;
   date_debut: string;
@@ -34,24 +34,24 @@ const navItems: NavItem[] = [
 const Myprojects = () => {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [darkmode, setDarkmode] = useState(false);
-  const [tickets, setTickets] = useState<Ticket[]>([]);
+  const [projets, setprojets] = useState<projet[]>([]);
   const navigate = useNavigate();
 
   // Simulation du chargement des données depuis l'API MySQL
   useEffect(() => {
-    // Exemple d'intégration : fetch('/api/tickets').then(res => res.json()).then(data => setTickets(data));
-    const fetchedTickets: Ticket[] = [
+    // Exemple d'intégration : fetch('/api/projets').then(res => res.json()).then(data => setprojets(data));
+    const fetchedprojets: projet[] = [
       {
-        id_ticket: 1,
+        id_projet: 1,
         titre: "Maintenance de la BDD Gest",
-        description: "Optimisation des index sur la table ticket et commentaire.",
+        description: "Optimisation des index sur la table projet et commentaire.",
         date_debut: "2026-08-19",
         statut: "En cours",
         id_utilisateur: 1,
         nom_utilisateur: "Yombi Mbele"
       },
       {
-        id_ticket: 2,
+        id_projet: 2,
         titre: "Implémentation des rôles RBAC",
         description: "Lier les permissions aux rôles utilisateur_role.",
         date_debut: "2026-08-19",
@@ -60,7 +60,7 @@ const Myprojects = () => {
         nom_utilisateur: "Guy Laroche"
       }
     ];
-    setTickets(fetchedTickets);
+    setprojets(fetchedprojets);
   }, []);
 
   const getStatusBadge = (statut: string) => {
@@ -104,7 +104,7 @@ const Myprojects = () => {
             <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700" onClick={() => setSidebarOpen(!sidebarOpen)}>
               <img src={sidebar_icon} alt="Sidebar" className="w-6 h-6" />
             </button>
-            <h1 className="text-2xl font-bold">Gestion des Tickets / Projets</h1>
+            <h1 className="text-2xl font-bold">Gestion des Projets et projets</h1>
           </div>
 
           <div className="flex items-center gap-4">
@@ -120,21 +120,21 @@ const Myprojects = () => {
         {/* Barre d'action */}
         <div className="flex justify-between items-center mb-6">
           <p className="text-gray-600 dark:text-gray-400">
-            Liste des tickets assignés aux administrateurs.
+            Liste des projets assignés aux managers.
           </p>
           <button className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
-            <Icons.Plus className="w-5 h-5" /> Créer un ticket
+            <Icons.Plus className="w-5 h-5" /> Créer un projet
           </button>
         </div>
 
-        {/* Grille de projets / tickets */}
+        {/* Grille de projets / projets */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {tickets.map((ticket) => (
-            <div key={ticket.id_ticket} className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col justify-between">
+          {projets.map((projet) => (
+            <div key={projet.id_projet} className="bg-white dark:bg-gray-800 rounded-xl p-5 shadow-sm border border-gray-100 dark:border-gray-700 flex flex-col justify-between">
               <div>
                 <div className="flex justify-between items-start mb-3">
-                  <span className={`text-xs px-2.5 py-1 rounded-full font-semibold ${getStatusBadge(ticket.statut)}`}>
-                    {ticket.statut}
+                  <span className={`text-xs px-2.5 py-1 rounded-full font-semibold ${getStatusBadge(projet.statut)}`}>
+                    {projet.statut}
                   </span>
                   <button className="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
                     <Icons.MoreVertical className="w-5 h-5" />
@@ -142,21 +142,21 @@ const Myprojects = () => {
                 </div>
 
                 <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">
-                  #{ticket.id_ticket} - {ticket.titre}
+                  #{projet.id_projet} - {projet.titre}
                 </h3>
                 <p className="text-sm text-gray-600 dark:text-gray-300 line-clamp-3 mb-4">
-                  {ticket.description}
+                  {projet.description}
                 </p>
               </div>
 
               <div className="pt-3 border-t border-gray-100 dark:border-gray-700 text-xs text-gray-500 dark:text-gray-400 flex justify-between items-center">
                 <span className="flex items-center gap-1">
                   <Icons.User className="w-4 h-4 text-gray-400" />
-                  {ticket.nom_utilisateur}
+                  {projet.nom_utilisateur}
                 </span>
                 <span className="flex items-center gap-1">
                   <Icons.Calendar className="w-4 h-4 text-gray-400" />
-                  {ticket.date_debut}
+                  {projet.date_debut}
                 </span>
               </div>
             </div>
