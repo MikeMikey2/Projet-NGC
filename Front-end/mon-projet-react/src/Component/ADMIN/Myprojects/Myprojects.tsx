@@ -49,7 +49,7 @@ const Myprojects = () => {
         statut: "En cours",
         id_utilisateur: 1,
         nom_utilisateur: "Yombi Mbele"
-      },
+      },  
       {
         id_ticket: 2,
         titre: "Implémentation des rôles RBAC",
