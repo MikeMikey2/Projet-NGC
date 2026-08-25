@@ -22,7 +22,6 @@ public class Utilisateur {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer idUtilisateur;
-
     private String nomUtilisateur;
     private String prenomUtilisateur;
     private String email;
