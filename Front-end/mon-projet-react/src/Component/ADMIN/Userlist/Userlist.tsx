@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './Userlist.css';
 import sidebar_icon from '../../Assets/sidebard.png';
@@ -12,6 +12,21 @@ interface NavItem {
   path: string;
 }
 
+interface Role {
+  idRole: number;
+  nomRole: string;
+  typeRole?: string;
+}
+
+interface Utilisateur {
+  idUtilisateur: number;
+  nomUtilisateur: string;
+  prenomUtilisateur: string;
+  email: string;
+  dateInsc: string;
+  role: Role[];  
+}
+
 const navItems: NavItem[] = [
   { name: "Dashboard", icon: Icons.Home, path: "/dashboard" },
   { name: "My projects", icon: Icons.FolderOpen, path: "/myprojects" },
@@ -20,16 +35,27 @@ const navItems: NavItem[] = [
   { name: "Document", icon: Icons.FileText, path: "/document" },
 ];
 
-const users = [
-  { id: 1, role: 'Admin', name: 'John', surname: 'Doe', email: 'john.doe@example.com', created: '2023-01-01' },
-  { id: 2, role: 'Manager', name: 'Marie', surname: 'Tchou', email: 'marie.tchou@example.com', created: '2023-02-15' },
-  { id: 3, role: 'Agent', name: 'Yvan', surname: 'Mbele', email: 'yvan.mbele@example.com', created: '2023-04-04' }
-];
 
 const Userlist = () => {
+  const [users, setUsers] = useState<Utilisateur[]>([]);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [darkmode, setDarkmode] = useState(false);
   const navigate = useNavigate();
+
+  
+
+  const loadUsers=async () =>{
+  try{
+    const response = await fetch('http://localhost:8080/api/utilisateur/utilisateurs');
+    const data = await response.json();
+    setUsers(data);
+  }  catch (error) {
+      console.error('Erreur lors du chargement des utilisateurs:', error);
+     }
+  }
+  useEffect(() => {
+    loadUsers();
+  }, []);
 
   const handleNavigation = (path: string) => {
     setSidebarOpen(false);
@@ -99,23 +125,36 @@ const Userlist = () => {
             </thead>
             <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
               {users.map((user) => (
-                <tr key={user.id} className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/60">
-                  <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{user.id}</td>
-                  <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">
-                    <span className="px-2 py-1 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200 text-xs font-medium">{user.role}</span>
-                  </td>
-                  <td className="px-6 py-4 text-sm text-gray-900 dark:text-white">{user.name}</td>
-                  <td className="px-6 py-4 text-sm text-gray-900 dark:text-white">{user.surname}</td>
-                  <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{user.email}</td>
-                  <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{user.created}</td>
-                  <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">
-                    <div className="flex items-center gap-2">
-                      <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-blue-600 dark:text-blue-300"><Icons.Pencil className="w-4 h-4" /></button>
-                      <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-red-600 dark:text-red-300"><Icons.Trash2 className="w-4 h-4" /></button>
-                    </div>
-                  </td>
-                </tr>
-              ))}
+              <tr key={user.idUtilisateur} className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-700/60">
+                <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{user.idUtilisateur}</td>
+                <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">
+                  <div className="flex flex-wrap gap-1">
+                    {user.role?.map((r) => (
+                     <span
+                       key={r.idRole}
+                      className="px-2 py-1 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200 text-xs font-medium"
+                      >
+                        {r.nomRole}
+                     </span>
+                       ))}
+                  </div>
+               </td>
+               <td className="px-6 py-4 text-sm text-gray-900 dark:text-white">{user.nomUtilisateur}</td>
+               <td className="px-6 py-4 text-sm text-gray-900 dark:text-white">{user.prenomUtilisateur}</td>
+               <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{user.email}</td>
+               <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{user.dateInsc}</td>
+               <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">
+               <div className="flex items-center gap-2">
+                 <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-blue-600 dark:text-blue-300">
+                   <Icons.Pencil className="w-4 h-4" />
+                 </button>
+                <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-red-600 dark:text-red-300">
+                  <Icons.Trash2 className="w-4 h-4" />
+                </button>
+               </div>
+               </td>
+              </tr> 
+                ))}
             </tbody>
           </table>
         </div>
