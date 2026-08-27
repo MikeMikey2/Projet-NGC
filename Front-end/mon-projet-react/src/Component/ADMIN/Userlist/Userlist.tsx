@@ -23,8 +23,8 @@ interface Utilisateur {
   nomUtilisateur: string;
   prenomUtilisateur: string;
   email: string;
-  dateInsc: string;
-  role: Role[];  
+  dateInscription: string;
+  roles: Role[];  
 }
 
 const navItems: NavItem[] = [
@@ -129,7 +129,7 @@ const Userlist = () => {
                 <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{user.idUtilisateur}</td>
                 <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">
                   <div className="flex flex-wrap gap-1">
-                    {user.role?.map((r) => (
+                    {user.roles?.map((r) => (
                      <span
                        key={r.idRole}
                       className="px-2 py-1 rounded-full bg-blue-100 text-blue-700 dark:bg-blue-900 dark:text-blue-200 text-xs font-medium"
@@ -142,7 +142,7 @@ const Userlist = () => {
                <td className="px-6 py-4 text-sm text-gray-900 dark:text-white">{user.nomUtilisateur}</td>
                <td className="px-6 py-4 text-sm text-gray-900 dark:text-white">{user.prenomUtilisateur}</td>
                <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{user.email}</td>
-               <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{user.dateInsc}</td>
+               <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">{user.dateInscription}</td>
                <td className="px-6 py-4 text-sm text-gray-600 dark:text-gray-300">
                <div className="flex items-center gap-2">
                  <button className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 text-blue-600 dark:text-blue-300">
