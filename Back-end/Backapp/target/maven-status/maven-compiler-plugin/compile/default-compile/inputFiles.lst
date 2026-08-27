@@ -4,6 +4,7 @@
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/CommentaireRepository.java
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/CommentaireRequest.java
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/LoginRequest.java
+/home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/LoginResponse.java
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/RegisterRequest.java
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/Role.java
 /home/mike/Projet NGC/Back-end/Backapp/src/main/java/com/cscorner/RoleRepository.java

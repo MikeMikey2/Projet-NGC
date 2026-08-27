@@ -7,6 +7,7 @@ import Freeprojects from './Component/ADMIN/Freeprojects/Freeprojects';
 import Myprojects from './Component/ADMIN/Myprojects/Myprojects';
 import Addprojects from './Component/ADMIN/Freeprojects/Addprojects/Addprojects';
 import Document from './Component/ADMIN/Document/Document';
+import Dashboard from './Component/MANAGER/Dashboard/Dashboard';
 
 function App() {
   return (

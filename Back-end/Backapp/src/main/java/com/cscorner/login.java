@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
 
 @RestController
 @RequestMapping("/api")
@@ -24,43 +25,32 @@ public class login {
     @Autowired
     private RoleRepository roleRepository;
 
-    @PostMapping("/login")
-    public String seConnecter(@RequestBody LoginRequest requete) {
-        Optional<Utilisateur> utilisateur = utilisateurRepository.findByEmail(requete.getEmail());
-        if (utilisateur.isPresent() && utilisateur.get().getMotDePasse().equals(requete.getMotDePasse())) {
-            return "Connexion réussie";
-        } else {
-            return "Email ou mot de passe incorrect";
-        }
+   @PostMapping("/login")
+public ResponseEntity<LoginResponse> seConnecter(@RequestBody LoginRequest requete) {
+    Optional<Utilisateur> utilisateurOpt = utilisateurRepository.findByEmail(requete.getEmail());
+
+    if (utilisateurOpt.isEmpty() || !utilisateurOpt.get().getMotDePasse().equals(requete.getMotDePasse())) {
+        return ResponseEntity.status(401)
+                .body(new LoginResponse(false, "Email ou mot de passe incorrect", null, null, null, null));
     }
 
-    @GetMapping("/roles")
-    public List<Role> listerRoles() {
-        return roleRepository.findAll();
-    }
+    Utilisateur utilisateur = utilisateurOpt.get();
 
-    @PostMapping("/register")
-    public String sInscrire(@RequestBody RegisterRequest requete) {
-        if (utilisateurRepository.findByEmail(requete.getEmail()).isPresent()) {
-            return "Cet email est déjà utilisé";
-        }
+    // On prend le premier rôle trouvé (à adapter si un utilisateur peut avoir plusieurs rôles actifs)
+    String roleType = utilisateur.getRoles().stream()
+            .findFirst()
+            .map(Role::getTypeRole)
+            .orElse(null);
 
-        Optional<Role> role = roleRepository.findById(requete.getRoleId());
-        if (role.isEmpty()) {
-            return "Rôle invalide";
-        }
+    LoginResponse response = new LoginResponse(
+            true,
+            "Connexion réussie",
+            roleType,
+            utilisateur.getIdUtilisateur(),
+            utilisateur.getNomUtilisateur(),
+            utilisateur.getPrenomUtilisateur()
+    );
 
-        Utilisateur nouvelUtilisateur = new Utilisateur();
-        nouvelUtilisateur.setNomUtilisateur(requete.getNom());
-        nouvelUtilisateur.setPrenomUtilisateur(requete.getPrenom());
-        nouvelUtilisateur.setEmail(requete.getEmail());
-        nouvelUtilisateur.setMotDePasse(requete.getMotDePasse());
-
-        Set<Role> roles = new HashSet<>();
-        roles.add(role.get());
-        nouvelUtilisateur.setRoles(roles);
-
-        utilisateurRepository.save(nouvelUtilisateur);
-        return "Inscription réussie";
-    }
+    return ResponseEntity.ok(response);
+ }
 }

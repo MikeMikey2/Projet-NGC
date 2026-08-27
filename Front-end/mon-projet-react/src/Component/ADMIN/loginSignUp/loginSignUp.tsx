@@ -35,43 +35,65 @@ const LoginSignUp = () => {
       .catch(() => setRoles([]));
   }, []);
 
-  const handleLogin = () => {
-    setErreur("")
-    fetch("http://localhost:8080/api/login", {
+  const handleLogin = async () => {
+  setErreur("")
+  try {
+    const response = await fetch("http://localhost:8080/api/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, motDePasse })
     })
-      .then(res => res.text())
-      .then(reponse => {
-        if (reponse === "Connexion réussie") {
-          navigate("/dashboard")
-        } else {
-          setErreur(reponse)
-        }
-      })
-      .catch(() => setErreur("Erreur de connexion au serveur"))
-  }
+    const data = await response.json()
 
-  const handleRegister = () => {
-    setErreur("")
-    setMessage("")
-    fetch("http://localhost:8080/api/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ nom, prenom: nom, email, motDePasse, roleId: Number(roleId) })
-    })
-      .then(res => res.text())
-      .then(reponse => {
-        if (reponse === "Inscription réussie") {
-          setMessage("Compte créé ! Vous pouvez vous connecter.")
-          setAction("login")
-        } else {
-          setErreur(reponse)
-        }
-      })
-      .catch(() => setErreur("Erreur de connexion au serveur"))
+    if (data.success) {
+      switch (data.role) {
+        case "Admin":
+          navigate("/admin")
+          break
+        case "Manager":
+          navigate("/manager")
+          break
+        case "Agent":
+          navigate("/agent")
+          break
+        case "Client":
+          navigate("/client")
+          break
+        default:
+          navigate("/dashboard")
+      }
+    } else {
+      setErreur(data.message)
+    }
+  } catch (error) {
+    setErreur("Erreur de connexion au serveur")
   }
+}
+
+  const handleRegister = async () => {
+  try {
+    const response = await fetch('http://localhost:8080/api/register', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        nom,
+        email,
+        motDePasse,
+        roleId: Number(roleId)
+      }),
+    });
+    const data = await response.text(); // ton /register renvoie une String, pas un objet JSON
+
+    if (data === "Inscription réussie") {
+      setMessage(data);
+      setAction("login"); // bascule automatiquement vers le formulaire de connexion
+    } else {
+      setErreur(data); // "Cet email est déjà utilisé" ou "Rôle invalide"
+    }
+  } catch (error) {
+    setErreur("Erreur de connexion au serveur");
+  }
+};
 
   return (
     <div className="container">
