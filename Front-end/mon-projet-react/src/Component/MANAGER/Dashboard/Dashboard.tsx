@@ -13,11 +13,10 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { name: "Dashboard", icon: Icons.Home, path: "/Dashboard" },
-  { name: "My projects", icon: Icons.FolderOpen, path: "/Myprojects" },
-  { name: "Free projects", icon: Icons.Gift, path: "/Freeprojects" },
-  { name: "Users", icon: Icons.Users, path: "/Userlist" },
-  { name: "Document", icon: Icons.FileText, path: "/Document" },
+  { name: "Dashboard", icon: Icons.Home, path: "/manager" },
+  { name: "My projects", icon: Icons.FolderOpen, path: "/managermyprojects" },
+  { name: "Free projects", icon: Icons.Gift, path: "/managerfreeprojects" },
+  { name: "Document", icon: Icons.FileText, path: "/managerdocument" },
 ];
 
 const stats = [
