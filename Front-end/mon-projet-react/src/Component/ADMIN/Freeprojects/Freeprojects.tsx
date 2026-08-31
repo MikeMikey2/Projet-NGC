@@ -84,9 +84,6 @@ const FreeProjects = () => {
     return matchRecherche && matchStatut && matchPriorite;
   });
 
-  const handleNouveauTicket = () => {
-    navigate('/Addprojects');
-  };
 
   return (
     <div className={`flex bg-gray-100 min-h-screen ${darkmode ? "dark bg-gray-900" : ""}`}>
@@ -131,9 +128,6 @@ const FreeProjects = () => {
 
         <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-6">
           <p className="text-gray-600 dark:text-gray-400">Suivi des projets et demandes de maintenance.</p>
-          <button onClick={handleNouveauTicket} className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg font-medium transition-colors">
-            <Icons.Plus className="w-5 h-5" /> Nouveau projet
-          </button>
         </div>
 
         <div className="bg-white dark:bg-gray-800 rounded-xl p-4 shadow-sm border border-gray-100 dark:border-gray-700 mb-6">
