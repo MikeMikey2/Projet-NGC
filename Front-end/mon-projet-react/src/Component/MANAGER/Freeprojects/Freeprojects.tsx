@@ -84,7 +84,7 @@ const FreeProjects = () => {
   });
 
   const handleNouveauTicket = () => {
-    navigate('/Addprojects');
+    navigate('/manageraddprojects');
   };
 
   return (

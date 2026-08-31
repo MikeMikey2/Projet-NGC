@@ -11,6 +11,7 @@ import ManagerDashboard from './Component/MANAGER/Dashboard/Dashboard';
 import ManagerFreeprojects from './Component/MANAGER/Freeprojects/Freeprojects';
 import ManagerMyprojects from './Component/MANAGER/Myprojects/Myprojects';
 import ManagerDocument from './Component/MANAGER/Document/Document';
+import ManagerAddprojects from './Component/MANAGER/Freeprojects/Addprojects/Addprojects';
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
         <Route path='/managerfreeprojects' element={<ManagerFreeprojects />} />
         <Route path='/managermyprojects' element={<ManagerMyprojects />} />
         <Route path='/managerdocument' element={<ManagerDocument />} />
+        <Route path='/manageraddprojects' element={<ManagerAddprojects />} />
       </Routes>
     </BrowserRouter>
   );
