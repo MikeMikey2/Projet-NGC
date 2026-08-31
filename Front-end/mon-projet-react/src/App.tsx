@@ -5,7 +5,6 @@ import LoginSignUp from './Component/ADMIN/loginSignUp/loginSignUp';
 import Userlist from './Component/ADMIN/Userlist/Userlist';
 import Freeprojects from './Component/ADMIN/Freeprojects/Freeprojects';
 import Myprojects from './Component/ADMIN/Myprojects/Myprojects';
-import Addprojects from './Component/ADMIN/Freeprojects/Addprojects/Addprojects';
 import Document from './Component/ADMIN/Document/Document';
 import ManagerDashboard from './Component/MANAGER/Dashboard/Dashboard';
 import ManagerFreeprojects from './Component/MANAGER/Freeprojects/Freeprojects';
@@ -22,10 +21,9 @@ function App() {
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/manager" element={<ManagerDashboard />} />
         <Route path="/userlist" element={<Userlist />} />
-        <Route path="/Freeprojects" element={<Freeprojects />} />
+        <Route path="/Freeprojects" element={<Freeprojects />} /> 
         <Route path="/Myprojects" element={<Myprojects />} />
-        <Route path="/Addprojects" element={<Addprojects />} />
-        <Route path="/Document" element={<Document />} />
+         <Route path="/Document" element={<Document />} />
         <Route path='/managerfreeprojects' element={<ManagerFreeprojects />} />
         <Route path='/managermyprojects' element={<ManagerMyprojects />} />
         <Route path='/managerdocument' element={<ManagerDocument />} />

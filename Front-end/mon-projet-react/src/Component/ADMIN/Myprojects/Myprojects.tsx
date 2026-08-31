@@ -24,7 +24,7 @@ interface projet {
 }
 
 const navItems: NavItem[] = [
-  { name: "Dashboard", icon: Icons.Home, path: "/dashboard" },
+  { name: "Dashboard", icon: Icons.Home, path: "/admin" },
   { name: "My projects", icon: Icons.FolderOpen, path: "/myprojects" },
   { name: "Free projects", icon: Icons.Gift, path: "/Freeprojects" },
   { name: "Users", icon: Icons.Users, path: "/Userlist" },
